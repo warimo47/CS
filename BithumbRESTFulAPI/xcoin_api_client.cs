@@ -204,11 +204,14 @@ namespace XCoinAPIConsoleClient
 
                 if (String.Compare(JObj["status"].ToString(), "0000", true) == 0)
                 {
+                    Console.WriteLine("- 타임 스탬프: {0}", JObj["data"]["date"].ToString());
+                    Console.WriteLine("- 시가 00시 기준: {0}", JObj["data"]["opening_price"].ToString());
+                    Console.WriteLine("- 종가 00시 기준: {0}", JObj["data"]["closing_price"].ToString());
+                    Console.WriteLine("- 거래량: {0}", JObj["data"]["units_traded"].ToString());
+                }
+                else
+                {
                     Console.WriteLine("- Status Code: {0}", JObj["status"].ToString());
-                    Console.WriteLine("- Opening Price: {0}", JObj["data"]["opening_price"].ToString());
-                    Console.WriteLine("- Closing Price: {0}", JObj["data"]["closing_price"].ToString());
-                    // Console.WriteLine("- Sell Price: {0}", JObj["data"]["sell_price"].ToString());
-                    // Console.WriteLine("- Buy Price: {0}", JObj["data"]["buy_price"].ToString());
                 }
             }
 
@@ -224,7 +227,7 @@ namespace XCoinAPIConsoleClient
             // /info/balance
             // /info/wallet_address
 
-            /* Console.WriteLine("Bithumb Private API URI('/info/account') Request...");
+            Console.WriteLine("Bithumb Private API URI('/info/account') Request...");
             JObj = hAPI_Svr.xcoinApiCall("/info/account", sParams, ref sRespBodyData);
             if (JObj == null)
             {
@@ -241,7 +244,7 @@ namespace XCoinAPIConsoleClient
                     Console.WriteLine("- Trade Fee: {0}", JObj["data"]["trade_fee"].ToString());
                     Console.WriteLine("- Balance: {0}", JObj["data"]["balance"].ToString());
                 }
-            } */
+            }
         }
     }
 }
